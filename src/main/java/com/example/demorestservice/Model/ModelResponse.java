@@ -1,12 +1,14 @@
-package com.example.demorestservice;
+package com.example.demorestservice.Model;
+
+import java.util.Map;
 
 public class ModelResponse {
 
   private final String requestID;
   private final double score;
 
-  public ModelResponse(String requestID, double inputA, double inputB, double inputC) {
-    Model model = new Model(requestID, inputA, inputB, inputC);
+  public ModelResponse(String requestID, Map<String, Double> features) {
+    Model model = new Model(requestID, features);
     model.setScore();
     this.requestID = requestID;
     this.score = model.getScore();
