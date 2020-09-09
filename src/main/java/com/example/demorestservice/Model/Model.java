@@ -1,18 +1,15 @@
 package com.example.demorestservice.Model;
 
 import com.example.demorestservice.utils.Constants;
-
 import java.util.Map;
 
 public class Model {
 
-  private final String id;
   private Map<String, Double> features;
   private double score;
   Constants constants = new Constants();
 
-  public Model(String id, Map<String, Double> features) {
-    this.id = id;
+  public Model(Map<String, Double> features) {
     this.features = features;
   }
 
@@ -24,10 +21,6 @@ public class Model {
                   this.features.get("featureB") * constants.coefficients.get("featureB") +
                   this.features.get("featureC") * constants.coefficients.get("featureC") +
                   constants.coefficients.get("intercept");
-  }
-
-  public String getId() {
-    return id;
   }
 
   public Map<String, Double> getFeatures() {
