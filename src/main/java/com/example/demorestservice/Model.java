@@ -1,24 +1,40 @@
 package com.example.demorestservice;
 
+import com.example.demorestservice.utils.Constants;
+
 public class Model {
 
-  private final long id;
-  private final double input;
-  private final double score;
+  private final String id;
+  private final double inputA;
+  private final double inputB;
+  private final double inputC;
+  private double score;
+  Constants constants = new Constants();
 
-  public Model(long id, double input) {
+  public Model(String id, double inputA, double inputB, double inputC) {
     this.id = id;
-    this.input = input;
-    this.score = this.input * this.input;
+    this.inputA = inputA;
+    this.inputB = inputB;
+    this.inputC = inputC;
   }
 
-  public long getId() {
+  /*
+  Alias for "predict". Model functionality goes here.
+   */
+  public void setScore() {
+    this.score = this.inputA * constants.coefficients.get("featureA") +
+                  this.inputB * constants.coefficients.get("featureB") +
+                  this.inputC * constants.coefficients.get("featureC") +
+                  constants.coefficients.get("intercept");
+  }
+
+  public String getId() {
     return id;
   }
 
-  public double getInput() {
-    return input;
-  }
+//  public double getInput() {
+//    return input;
+//  }
 
   public double getScore() {
     return score;

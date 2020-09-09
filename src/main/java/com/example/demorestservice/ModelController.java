@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class ModelController {
 
-  private final AtomicLong counter = new AtomicLong();
+//  private final AtomicLong counter = new AtomicLong();
 
   @PostMapping("/model")
   public ModelResponse postController(@RequestBody ModelRequest request) {
-    return new ModelResponse(counter.incrementAndGet(), request.getInput());
+    return new ModelResponse(request.getRequestID(), request.getInputA(), request.getInputB(), request.getInputC());
   }
 }
